@@ -1,22 +1,15 @@
 var SDK = {
 
-  serverURL: "http://localhost:3000/api",
+  serverURL: "https://localhost:8000",
 
   request: function (options, cb) {
 
-    //Take care of headers
-    var headers = {};
-    if (options.headers) {
-      Object.keys(options.headers).forEach(function (h) {
-        headers[h] = (typeof options.headers[h] === 'object') ? JSON.stringify(options.headers[h]) : options.headers[h];
-      });
-    }
+
 
     //Perform XHR
     $.ajax({
       url: SDK.serverURL + options.url,
       method: options.method,
-      headers: headers,
       contentType: "application/json",
       dataType: "json",
       data: JSON.stringify(options.data),
@@ -31,16 +24,26 @@ var SDK = {
 
   Book: {
     getAll: function (cb) {
-      SDK.request({method: "GET", url: "/books", headers: {filter: {include: ["authors", "publisher"]}}}, cb);
+      SDK.request({method: "GET", url: "/getbooks"}, cb);
     },
     create: function (data, cb) {
-      SDK.request({method: "POST", url: "/books", data: data, headers: {authorization: SDK.Storage.load("tokenId")}}, cb);
+      SDK.request({method: "POST", url: "/createbook", data: data, headers: {authorization: SDK.Storage.load("tokenId")}}, cb);
     }
+  },
+
+  Ads: {
+    getAll: function (cb) {
+      SDK.request({method: "GET", url: "/getads"}, cb);
+    }
+
   },
 
   User: {
     getAll: function (cb) {
-      SDK.request({method: "GET", url: "/staffs"}, cb);
+      SDK.request({method: "GET", url: "/getusers"}, cb);
+    },
+    create: function (data, cb) {
+      SDK.request({method: "POST", url: "/createuser"}, cb);
     },
     current:function () {
       return SDK.Storage.load("user");
@@ -53,25 +56,20 @@ var SDK = {
     }
   },
 
-  Author: {
-    getAll: function (cb) {
-      SDK.request({method: "GET", url: "/authors"}, cb);
-    }
-  },
-
   logOut:function() {
     SDK.Storage.remove("tokenId");
     SDK.Storage.remove("userId");
     SDK.Storage.remove("user");
   },
 
-  login: function (username, password, cb) {
+  login: function (username, password,type, cb) {
     this.request({
       data: {
         username: username,
-        password: password
+        password: password,
+        type: type
       },
-      url: "/staffs/login?include=user",
+      url: "/login",
       method: "POST"
     }, function (err, data) {
 
@@ -80,7 +78,7 @@ var SDK = {
 
       SDK.Storage.persist("tokenId", data.id);
       SDK.Storage.persist("userId", data.userId);
-      SDK.Storage.persist("user", data.user);
+      SDK.Storage.persist("user", data.username);
 
       cb(null, data);
 
@@ -105,5 +103,7 @@ var SDK = {
       window.localStorage.removeItem(this.prefix + key);
     }
   }
+
+
 
 };

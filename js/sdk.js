@@ -10,7 +10,6 @@ var SDK = {
     $.ajax({
       url: SDK.serverURL + options.url,
       method: options.method,
-      contentType: "application/json",
       dataType: "json",
       data: JSON.stringify(options.data),
       success: function (data, status, xhr) {
@@ -62,12 +61,11 @@ var SDK = {
     SDK.Storage.remove("user");
   },
 
-  login: function (username, password,type, cb) {
+  login: function (username, password, cb) {
     this.request({
       data: {
         username: username,
         password: password,
-        type: type
       },
       url: "/login",
       method: "POST"

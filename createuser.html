@@ -56,7 +56,7 @@
             <form class="form-horizontal" id="loginForm">
                 <fieldset>
 
-                    <legend>Login</legend>
+                    <legend>Opret ny bruger</legend>
 
 
                     <div class="form-group row">
@@ -79,9 +79,16 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="newUserPhonenumber" class="col-xs-2 col-form-label">Telephone</label>
+                        <label for="newUserPhonenumber" class="col-xs-2 col-form-label">Telefon nr: </label>
                         <div class="col-xs-10">
                             <input class="form-control" type="tel" placeholder="004512345678" id="newUserPhonenumber">
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label for="newUserAdress" class="col-xs-2 col-form-label">Adresse</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="tel" placeholder="testadresse" id="newUserAdress">
                         </div>
                     </div>
 
@@ -89,16 +96,16 @@
                         <h7> Jeg modtager følgende: </h7> <br>
                         <form action="demo_form.asp" method="get">
 
-                            <input type="checkbox" name="mobilepay" value="1"> Mobilepay<br>
-                            <input type="checkbox" name="cash" value="1">  Cash <br>
-                            <input type="checkbox" name="transfer" value="1"> Transfer <br>
+                            <input type="checkbox" name="mobilepay" value="mobilepay"> Mobilepay<br>
+                            <input type="checkbox" name="cash" value="cash">  Cash <br>
+                            <input type="checkbox" name="transfer" value="transfer"> Transfer <br>
 
                         </form>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" id="addNewUserButton" class="btn btn-primary">Save</button>
                     </div>
 
                 </fieldset>

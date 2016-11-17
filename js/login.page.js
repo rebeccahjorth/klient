@@ -10,6 +10,7 @@ $(document).ready(function () {
     var username = $("#inputUsername").val();
     var pw = $("#inputPassword").val();
 
+
     SDK.login(username, pw, function(err, data){
 
       //On wrong credentials
@@ -20,12 +21,14 @@ $(document).ready(function () {
       //Login OK!
       $("#loginForm").find(".form-group").addClass("has-success");
 
-      if(type=1){
+      if(data.type==1){
         window.location.href = "admin.html";
       } else{
-        window.location.href= "user.html";
-
+        window.location.href = "user.html";
       }
+
+
+
 
 
 

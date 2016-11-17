@@ -7,6 +7,19 @@
  */
 $("#addNewUserButton").on("click", function () {
 
+    var mobileIsChosen = 0;
+    if($("input[name=mobilepay]:checked").val()){
+        mobileIsChosen = 1;
+    }
+    var cashIsChosen =0;
+    if($("input[name=cash]:checked").val()){
+        cashIsChosen=1;
+    }
+    var transferIsChosen =0;
+    if ($("input[name=transfer]:checked").val()){
+        transferIsChosen=1;
+    }
+
     //Create JSON object
     var user = {
         username: $("#newUserUsername").val(),
@@ -15,21 +28,18 @@ $("#addNewUserButton").on("click", function () {
         phonenumber: parseInt( $("#newUserPhonenumber").val()),
         adress: $("#newUserAdress").val(),
 
-        mobilepay: parseInt( $("input[name=mobilepay]:checked").val()),
-        cash: parseInt($("input[name=cash]:checked").val()),
-        transfer: parseInt($("input[name=transfer]:checked").val()),
+        mobilepay: mobileIsChosen,
+        cash: cashIsChosen,
+        transfer: transferIsChosen
     };
 
-    //Fetch selected authors
-    $('#authorsCheckbox').find('input:checked').each(function() {
-        user.mobilepay.push($(this).val());
-    });
 
     //Create user
-    SDK.user.create(user, function(err, data){
+    SDK.User.create(user, function(err, data){
         if(err) throw err;
+       console.log(user.username);
 
-        $("#newUserModal").modal("hide");
+        window.location.href= "user.html";
     });
 
 });

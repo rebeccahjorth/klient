@@ -8,46 +8,47 @@
 
 
     <meta charset="UTF-8">
-    <title>Admin panel</title>
+    <title>User panel</title>
 
 </head>
 <body>
 
 
-<!-- Create new Book -->
-<div class="modal fade" id="newBookModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- Create new annonce -->
+<div class="modal fade" id="newAdModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Opret ny bog</h4>
+                <h4 class="modal-title">Opret ny annonce</h4>
             </div>
             <div class="modal-body">
 
                 <div class="row" >
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                         <div class="form-group">
-                            <label class="control-label" for="bookISBN">ISBN nr. </label>
-                            <input class="form-control" id="bookISBN" type="text">
+                            <label class="control-label" for="adIsbn">ISBN</label>
+                            <input class="form-control" id="adIsbn" type="text">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label" for="adRating">Rating</label>
+                            <input class="form-control" id="adRating" type="text">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label class="control-label" for="bookTitle">Title</label>
-                            <input class="form-control" id="bookTitle" type="text">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label" for="bookEdition">Udgave</label>
-                            <input class="form-control" id="bookEdition" type="number">
+                            <label class="control-label" for="adComment">Kommentar</label>
+                            <input class="form-control" id="adComment" type="text">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label class="control-label" for="bookAuthor">Forfatter</label>
-                            <input class="form-control" id="bookAuthor" type="text">
+                            <label class="control-label" for="adPrice">Price</label>
+                            <input class="form-control" id="adPrice" type="text">
                         </div>
                     </div>
 
@@ -56,71 +57,12 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Luk</button>
-                <button type="button" class="btn btn-success" id="createBookButton">Opret bog</button>
+                <button type="button" class="btn btn-success" id="createAdButton">Opret annonce</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Create new User  -->
-<div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Opret ny bruger</h4>
-            </div>
-            <div class="modal-body">
-                <div class="modal-body">
-
-                </div>
-
-                <div class="form-group row">
-                    <label for="newUserUsername" class="col-xs-2 col-form-label">Username</label>
-                    <div class="col-xs-10">
-                        <input class="form-control" type="search" placeholder="new username" id="newUserUsername">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="newUserPassword" class="col-xs-2 col-form-label">Password</label>
-                    <div class="col-xs-10">
-                        <input class="form-control" type="password" placeholder="example" id="newUserPassword">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="newUserEmail" class="col-xs-2 col-form-label">Email</label>
-                    <div class="col-xs-10">
-                        <input class="form-control" type="email" placeholder="example@example.com" id="newUserEmail">
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="newUserPhonenumber" class="col-xs-2 col-form-label">Telephone</label>
-                    <div class="col-xs-10">
-                        <input class="form-control" type="tel" placeholder="004512345678" id="newUserPhonenumber">
-                    </div>
-                </div>
-
-                <div>
-                    <h7> Jeg modtager følgende: </h7>
-                    <form action="demo_form.asp" method="get">
-                        <input type="checkbox" name="mobilepay" value="1"> Mobilepay<br>
-                        <input type="checkbox" name="cash" value="1">  Cash <br>
-                        <input type="checkbox" name="transfer" value="1"> Transfer <br>
-
-                    </form>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
 
 
 <div class="container">
@@ -159,30 +101,61 @@
 
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Bøger</h3>
+                    <h3 class="panel-title">Bøger til salg</h3>
                 </div>
                 <div class="panel-body">
 
                     <table class="table table-striped">
                         <thead>
+                        <th>ISBN</th>
                         <th>Titel</th>
                         <th>Forfatter</th>
-                        <th>Udgave</th>
-                        <th>ISBN</th>
+                        <th>Edition</th>
+                        <th>Rating</th>
                         </thead>
-                        <tbody id="booksTableBody">
+                        <tbody id="adsTableBody">
+
 
                         </tbody>
                     </table>
 
                     <hr>
                     <!-- Button trigger modal -->
-                    <button class="btn btn-success" id="addNewBookButton">
-                        <span class="glyphicon glyphicon-plus"></span> Opret ny bog
+                    <button class="btn btn-success" id="addNewAdButton">
+                        <span class="glyphicon glyphicon-plus"></span> Opret ny annonce
                     </button>
 
                 </div>
+
             </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Mine annoncer</h3>
+                </div>
+                <div class="panel-body">
+
+                    <table class="table table-striped">
+                        <thead>
+                        <th>ISBN</th>
+                        <th>Titel</th>
+                        <th>Forfatter</th>
+                        <th>Edition</th>
+                        <th>Rating</th>
+                        <th>Locked</th>
+                        </thead>
+                        <tbody id="myAdsTableBody">
+
+
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+
+            </div>
+
 
         </div>
     </div>

@@ -14,6 +14,7 @@ $(document).ready(function () {
           "<td>" + book.author + "</td>" +
           "<td>" + book.edition + "</td>" +
           "<td>" + book.isbn + "</td>" +
+
         "</tr>");
     });
 

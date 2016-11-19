@@ -12,6 +12,7 @@ var SDK = {
       method: options.method,
       dataType: "json",
       data: JSON.stringify(options.data),
+      xhrFields: { withCredentials: true },
       success: function (data, status, xhr) {
         cb(null, data, status, xhr);
       },
@@ -26,23 +27,38 @@ var SDK = {
       SDK.request({method: "GET", url: "/getbooks"}, cb);
     },
     create: function (data, cb) {
-      SDK.request({method: "POST", url: "/createbook", data: data, headers: {authorization: SDK.Storage.load("tokenId")}}, cb);
-    }
+      SDK.request({method: "POST", url: "/createbook",data:data}, cb);
+    },
+      delete: function (data, cb) {
+          SDK.request({method: "POST", url: "/deletebook",data:data}, cb);
+      }
   },
 
   Ads: {
     getAll: function (cb) {
       SDK.request({method: "GET", url: "/getads"}, cb);
-    }
+    },
+
+    create: function(data,cb){
+      SDK.request({method: "POST", url:"/createad"},cb);
+
+    },
 
   },
+    MyAds: {
+        getAll: function (cb) {
+            SDK.request({method: "GET", url: "/getmyads"}, cb);
+        },
+
+
+    },
 
   User: {
     getAll: function (cb) {
       SDK.request({method: "GET", url: "/getusers"}, cb);
     },
     create: function (data, cb) {
-      SDK.request({method: "POST", url: "/createuser"}, cb);
+      SDK.request({method: "POST", url: "/createuser", data: data, headers: cb}, cb);
     },
     current:function () {
       return SDK.Storage.load("user");
@@ -56,7 +72,6 @@ var SDK = {
   },
 
   logOut:function() {
-    SDK.Storage.remove("tokenId");
     SDK.Storage.remove("userId");
     SDK.Storage.remove("user");
   },
@@ -74,7 +89,6 @@ var SDK = {
       //On login-error
       if (err) return cb(err);
 
-      SDK.Storage.persist("tokenId", data.id);
       SDK.Storage.persist("userId", data.userId);
       SDK.Storage.persist("user", data.username);
 

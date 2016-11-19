@@ -35,7 +35,9 @@ $("#addNewUserButton").on("click", function () {
 
 
     //Create user
-    SDK.User.create(user, function(err, data){
+
+
+        SDK.User.create(user, function(err, data){
         if(err) throw err;
        console.log(user.username);
 

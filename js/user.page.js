@@ -33,9 +33,9 @@ $(document).ready(function () {
             $MyAdsTableBody.append(
                 "<tr>" +
                 "<td>" + ads.isbn + "</td>" +
-                "<td>" + ads.title + "</td>" +
-                "<td>" + ads.author + "</td>" +
-                "<td>" + ads.edition + "</td>" +
+                "<td>" + ads.bookTitle + "</td>" +
+                "<td>" + ads.bookAuthor + "</td>" +
+                "<td>" + ads.bookEdition + "</td>" +
                 "<td>" + ads.comment + "</td>" +
                 "<td>" + ads.rating + "</td>" +
                 "<td>" + ads.locked + "</td>" +
@@ -59,20 +59,21 @@ $(document).ready(function () {
             //Create JSON object
             var ad = {
 
-                ISBN: $("#adIsbn").val(),
-                rating: $("#adRating").val(),
-                edition: $("#adComment").val(),
-                price: $("#adPrice").val(),
+                isbn: parseInt($("#adIsbn").val()),
+                rating: parseInt($("#adRating").val()),
+                comment: $("#adComment").val(),
+                price: parseInt($("#adPrice").val()),
 
             };
 
 
 
             //Create ad
-            SDK.Ads.create(ads, function(err,data){
+            SDK.Ads.create(ad, function(err,data){
                 if(err) throw err;
 
                 $("#newAdModal").modal("hide");
+                location.reload();
             });
 
         });

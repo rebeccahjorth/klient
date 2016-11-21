@@ -23,7 +23,7 @@ $(document).ready(function () {
 
   });
 
-  //Fires on page-load
+
 
 
   var currentUser = SDK.User.current();
@@ -42,6 +42,7 @@ $(document).ready(function () {
           "<td>" + user.username + "</td>" +
           "<td>" + user.password + "</td>" +
           "<td>" + user.email + "</td>" +
+          "<td>" + user.phonenumber + "</td>" +
           "<td><button class=" +"deleteUserBtn" +">Slet</button>"+ "</td>"+
           "</tr>");
 

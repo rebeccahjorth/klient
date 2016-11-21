@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 
         var $adsTableBody = $("#adsTableBody");
-        data.forEach(function (ads,data ) {
+        data.forEach(function (ads) {
 
             $adsTableBody.append(
                 "<tr>" +
@@ -28,14 +28,14 @@ $(document).ready(function () {
 
 
         var $MyAdsTableBody = $("#myAdsTableBody");
-        data.forEach(function (ads,data ) {
+        data.forEach(function (ads ) {
 
             $MyAdsTableBody.append(
                 "<tr>" +
                 "<td>" + ads.isbn + "</td>" +
-                "<td>" + ads.bookTitle + "</td>" +
-                "<td>" + ads.bookAuthor + "</td>" +
-                "<td>" + ads.bookEdition + "</td>" +
+                "<td>" + ads.title + "</td>" +
+                "<td>" + ads.author + "</td>" +
+                "<td>" + ads.edition + "</td>" +
                 "<td>" + ads.comment + "</td>" +
                 "<td>" + ads.rating + "</td>" +
                 "<td>" + ads.locked + "</td>" +
@@ -68,8 +68,8 @@ $(document).ready(function () {
 
 
 
-            //Create book
-            SDK.Ads.create(add, function(err,data){
+            //Create ad
+            SDK.Ads.create(ads, function(err,data){
                 if(err) throw err;
 
                 $("#newAdModal").modal("hide");

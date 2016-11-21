@@ -23,10 +23,10 @@ $("#addNewUserButton").on("click", function () {
     //Create JSON object
     var user = {
         username: $("#newUserUsername").val(),
-        Password: $("#newUserPassword").val(),
+        password: $("#newUserPassword").val(),
         email: $("#newUserEmail").val(),
         phonenumber: parseInt( $("#newUserPhonenumber").val()),
-        adress: $("#newUserAdress").val(),
+        address: $("#newUserAdress").val(),
 
         mobilepay: mobileIsChosen,
         cash: cashIsChosen,

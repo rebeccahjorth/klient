@@ -62,6 +62,9 @@ var SDK = {
     },
     current:function () {
       return SDK.Storage.load("user");
+    },
+    delete: function (data, cb) {
+      SDK.request({method: "POST", url: "/deleteuser",data:data}, cb);
     }
   },
 

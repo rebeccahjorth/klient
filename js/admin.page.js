@@ -5,8 +5,11 @@ $(document).ready(function () {
     if (err) throw err;
 
 
+
+
     var $booksTableBody = $("#booksTableBody");
     data.forEach(function (book, i) {
+
 
       $booksTableBody.append(
           "<tr>" +
@@ -14,11 +17,10 @@ $(document).ready(function () {
           "<td>" + book.author + "</td>" +
           "<td>" + book.edition + "</td>" +
           "<td>" + book.isbn + "</td>" +
-          "<td><button class=" +"deleteBookBtn" +">Slet</button>"+ "</td>"+
+          "<td><button class='deleteBookButton' data-bookIsbn='" + book.bookIsbn + "'>Slet</button></td>"+
+
           "</tr>");
     });
-
-
 
 
   });
@@ -43,7 +45,7 @@ $(document).ready(function () {
           "<td>" + user.password + "</td>" +
           "<td>" + user.email + "</td>" +
           "<td>" + user.phonenumber + "</td>" +
-          "<td><button class=" +"deleteUserBtn" +">Slet</button>"+ "</td>"+
+          "<td><button class='deleteUserButton' data-userId='" + user.userId + "'>Slet</button></td>"+
           "</tr>");
 
     });
@@ -51,6 +53,20 @@ $(document).ready(function () {
 
   });
 
+    /**
+     * delete book btn
+     */
+
+    $(".deleteUserButton").on("click", function(){
+        var userId = $(this);
+
+
+        SDK.User.delete(userId, function(err,data) {
+            if (err) throw err;
+
+        });
+
+    });
 
 
   /**
@@ -95,7 +111,8 @@ $(document).ready(function () {
 
 
 
-  $("#logOutLink").on("click", function(){
+
+    $("#logOutLink").on("click", function(){
     SDK.logOut();
     window.location.href = "index.html";
   });

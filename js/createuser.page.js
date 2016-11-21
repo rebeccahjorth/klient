@@ -37,7 +37,7 @@ $("#addNewUserButton").on("click", function () {
     //Create user
     SDK.User.create(user, function(err, data){
         if(err) throw err;
-       console.log(user.username);
+      // console.log(user.username);
 
         window.location.href= "user.html";
     });

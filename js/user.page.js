@@ -16,10 +16,26 @@ $(document).ready(function () {
                 "<td>" + ads.bookAuthor + "</td>" +
                 "<td>" + ads.bookEdition + "</td>" +
                 "<td>" + ads.rating + "</td>" +
+                "<td><button class='ThisAdButton' data-adId='" + ads.adId + "'>Vis Mere</button></td>"+
+
                 "</tr>");
         });
 
     });
+
+
+    $(".ThisAdButton").on("click", function(){
+        var adId = $(this);
+
+
+        SDK.User.delete(adId, function(err,data) {
+            if (err) throw err;
+
+        });
+
+    });
+
+
 
 
     //Fires on page-load

@@ -32,6 +32,10 @@ $(document).ready(function () {
   $("#currentUserName").text(currentUser.username);
 
 
+
+    /**
+    * get all users in a table
+     */
   SDK.User.getAll(function (err, users) {
     if (err) throw err;
 
@@ -54,14 +58,16 @@ $(document).ready(function () {
   });
 
     /**
-     * delete book btn
+     * delete user btn
      */
 
-    $(".deleteUserButton").on("click", function(){
-        var userId = $(this);
+    $('.deleteUserButton').on("click", function(){
+        //$(this).attr("userId");
+
+       var userId = $(this).attr('user');
 
 
-        SDK.User.delete(userId, function(err,data) {
+        SDK.User.delete(data, function(err) {
             if (err) throw err;
 
         });

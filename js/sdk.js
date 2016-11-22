@@ -40,7 +40,9 @@ var SDK = {
     },
 
     create: function(data,cb){
-      SDK.request({method: "POST", url:"/createad", data:data},cb);
+      SDK.request({method: "POST", url:"/createad", },cb);
+
+
 
     },
 
@@ -68,11 +70,7 @@ var SDK = {
     }
   },
 
-  Publisher: {
-    getAll: function (cb) {
-      SDK.request({method: "GET", url: "/publishers"}, cb);
-    }
-  },
+
 
   logOut:function() {
     SDK.Storage.remove("userId");

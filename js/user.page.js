@@ -11,12 +11,14 @@ $(document).ready(function () {
 
             $adsTableBody.append(
                 "<tr>" +
+                "<td>" + ads.adId + "</td>" +
                 "<td>" + ads.isbn + "</td>" +
                 "<td>" + ads.bookTitle + "</td>" +
                 "<td>" + ads.bookAuthor + "</td>" +
                 "<td>" + ads.bookEdition + "</td>" +
                 "<td>" + ads.rating + "</td>" +
-                "<td><button class='ThisAdButton' data-adId='" + ads.adId + "'>Vis Mere</button></td>"+
+                "<td><button class='showAdButton' data-adId='" + ads.adId + "'>Vis Mere</button></td>"+
+                "<td><button class='reserveAdButton' data-adId='" + ads.adId + "'>Reserver</button></td>"+
 
                 "</tr>");
         });
@@ -27,11 +29,31 @@ $(document).ready(function () {
          */
         $(".showAdButton").on("click", function(){
             var $showbutton = $(this);
+            var adId = {
+                id: $showbutton.data("adid")};
 
-            var userId = $showbutton.data("userid");
-
-            SDK.Ads.getAll(userId, function(err) {
+            SDK.Ads.getAd(adId, function(err) {
                 if (err) throw err;
+
+                $('#newAdModal').modal('show');
+
+
+            });
+        });
+
+        /**
+         * reserve this ad
+         */
+        $(".reserveAdButton").on("click", function(){
+            var $reserveButton = $(this);
+            var adId = {
+                id: $reserveButton.data("adid")};
+
+            SDK.Ads.reserve(adId, function(err) {
+                if (err) throw err;
+                location.reload();
+
+
 
             });
         });
@@ -40,16 +62,6 @@ $(document).ready(function () {
     });
 
 
-    $(".ThisAdButton").on("click", function(){
-        var adId = $(this);
-
-
-        SDK.User.delete(adId, function(err,data) {
-            if (err) throw err;
-
-        });
-
-    });
 
 
 
@@ -71,7 +83,25 @@ $(document).ready(function () {
                 "<td>" + ads.comment + "</td>" +
                 "<td>" + ads.rating + "</td>" +
                 "<td>" + ads.locked + "</td>" +
+                "<td><button class='deleteReservedButton' data-adId='" + ads.adId + "'>Slet reservation</button></td>"+
                 "</tr>");
+        });
+
+        /**
+         * reserve this ad
+         */
+        $(".deleteReservedButton").on("click", function(){
+            var $deleteReservedBtn = $(this);
+            var adId = {
+                id: $deleteReservedBtn.data("adid")};
+
+            SDK.Ads.deletereserved(adId, function(err) {
+                if (err) throw err;
+                location.reload();
+
+
+
+            });
         });
 
     });

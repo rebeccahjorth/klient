@@ -1,52 +1,62 @@
 var SDK = {
 
-  serverURL: "https://localhost:8000",
+    serverURL: "https://localhost:8000",
 
-  request: function (options, cb) {
+    request: function (options, cb) {
 
 
 
-    //Perform XHR
-    $.ajax({
-    url: SDK.serverURL + options.url,
-    method: options.method,
-    dataType: "json",
-    data: JSON.stringify(options.data),
-    xhrFields: { withCredentials: true },
-    success: function (data, status, xhr) {
-        cb(null, data, status, xhr);
-    },
-    error: function (xhr, status, errorThrown) {
-        cb({xhr: xhr, status: status, error: errorThrown});
-    }
-});
-},
-
-  Book: {
-    getAll: function (cb) {
-      SDK.request({method: "GET", url: "/getbooks"}, cb);
-    },
-    create: function (data, cb) {
-      SDK.request({method: "POST", url: "/createbook",data:data}, cb);
-    },
-      delete: function (data, cb) {
-          SDK.request({method: "POST", url: "/deletebook",data:data}, cb);
-      }
-  },
-
-  Ads: {
-    getAll: function (cb) {
-      SDK.request({method: "GET", url: "/getads"}, cb);
+        //Perform XHR
+        $.ajax({
+            url: SDK.serverURL + options.url,
+            method: options.method,
+            dataType: "json",
+            data: JSON.stringify(options.data),
+            xhrFields: {withCredentials: true},
+            success: function (data, status, xhr) {
+                cb(null, data, status, xhr);
+            },
+            error: function (xhr, status, errorThrown) {
+                cb({xhr: xhr, status: status, error: errorThrown});
+            }
+        });
     },
 
-    create: function(data,cb){
-      SDK.request({method: "POST", url:"/createad",data:data},cb);
+    Book: {
+        getAll: function (cb) {
+            SDK.request({method: "GET", url: "/getbooks"}, cb);
+        },
+        create: function (data, cb) {
+            SDK.request({method: "POST", url: "/createbook", data: data}, cb);
+        },
+        delete: function (data, cb) {
+            SDK.request({method: "POST", url: "/deletebook", data: data}, cb);
+        }
+    },
+
+    Ads: {
+        getAll: function (cb) {
+            SDK.request({method: "GET", url: "/getads"}, cb);
+        },
+
+        create: function (data, cb) {
+            SDK.request({method: "POST", url: "/createad", data: data}, cb);
+
+        },
+        getAd: function (cb) {
+            SDK.request({method: "GET", url: "/getadpublic"}, cb);
+        },
+        reserve: function (data, cb) {
+            SDK.request({method: "POST", url: "/reservead", data:data}, cb);
+        },
+        deletereserved: function (data, cb) {
+            SDK.request({method: "POST", url: "/deletereservation", data:data}, cb);
+        },
+
 
     },
-      getAll: function (cb) {
-          SDK.request({method: "GET", url: "/getadpublic"}, cb);
-      }
-  },
+
+
     MyAds: {
         getAll: function (cb) {
             SDK.request({method: "GET", url: "/getmyads"}, cb);

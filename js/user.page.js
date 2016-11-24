@@ -21,6 +21,22 @@ $(document).ready(function () {
                 "</tr>");
         });
 
+
+        /**
+         * show this ad
+         */
+        $(".showAdButton").on("click", function(){
+            var $showbutton = $(this);
+
+            var userId = $showbutton.data("userid");
+
+            SDK.Ads.getAll(userId, function(err) {
+                if (err) throw err;
+
+            });
+        });
+
+
     });
 
 

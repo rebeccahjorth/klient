@@ -8,7 +8,7 @@ $(document).ready(function () {
 
 
     var $booksTableBody = $("#booksTableBody");
-    data.forEach(function (book, i) {
+    data.forEach(function (book) {
 
 
       $booksTableBody.append(
@@ -17,11 +17,24 @@ $(document).ready(function () {
           "<td>" + book.author + "</td>" +
           "<td>" + book.edition + "</td>" +
           "<td>" + book.isbn + "</td>" +
-          "<td><button class='deleteBookButton' data-bookIsbn='" + book.bookIsbn + "'>Slet</button></td>"+
+          "<td><button class='deleteBookBtn' data-isbn='" + book.isbn + "'>Slet</button></td>"+
 
           "</tr>");
     });
+      /**
+       * delete user btn
+       */
+      $(".deleteBookBtn").on("click", function(){
+          var $deleteButton = $(this);
 
+          var isbn = {
+              isbn: $deleteButton.data("isbn")};
+
+          SDK.Book.delete(isbn, function(err,data) {
+              if (err) throw err;
+                location.reload();
+          });
+      });
 
   });
 
@@ -34,7 +47,7 @@ $(document).ready(function () {
 
 
     /**
-    * get all users in a table
+    * get all users in a table with btn
      */
   SDK.User.getAll(function (err, users) {
     if (err) throw err;
@@ -55,24 +68,29 @@ $(document).ready(function () {
     });
 
 
+
+      /**
+       * delete user btn
+       */
+      $(".deleteUserButton").on("click", function(){
+          var $deleteButton = $(this);
+
+          var userId = {
+              userId: $deleteButton.data("userid")};
+
+          SDK.User.delete(userId, function(err) {
+              if (err) throw err;
+
+          });
+          });
+
+
+
   });
 
-    /**
-     * delete user btn
-     */
-
-    $('.deleteUserButton').on("click", function(){
-        //$(this).attr("userId");
-
-       var userId = $(this).attr('user');
 
 
-        SDK.User.delete(data, function(err) {
-            if (err) throw err;
 
-        });
-
-    });
 
 
   /**
@@ -125,4 +143,5 @@ $(document).ready(function () {
 
 
 });
+
 

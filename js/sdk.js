@@ -8,19 +8,19 @@ var SDK = {
 
     //Perform XHR
     $.ajax({
-      url: SDK.serverURL + options.url,
-      method: options.method,
-      dataType: "json",
-      data: JSON.stringify(options.data),
-      xhrFields: { withCredentials: true },
-      success: function (data, status, xhr) {
+    url: SDK.serverURL + options.url,
+    method: options.method,
+    dataType: "json",
+    data: JSON.stringify(options.data),
+    xhrFields: { withCredentials: true },
+    success: function (data, status, xhr) {
         cb(null, data, status, xhr);
-      },
-      error: function (xhr, status, errorThrown) {
+    },
+    error: function (xhr, status, errorThrown) {
         cb({xhr: xhr, status: status, error: errorThrown});
-      }
-    });
-  },
+    }
+});
+},
 
   Book: {
     getAll: function (cb) {
@@ -40,12 +40,12 @@ var SDK = {
     },
 
     create: function(data,cb){
-      SDK.request({method: "POST", url:"/createad", },cb);
-
-
+      SDK.request({method: "POST", url:"/createad",data:data},cb);
 
     },
-
+      getAll: function (cb) {
+          SDK.request({method: "GET", url: "/getadpublic"}, cb);
+      }
   },
     MyAds: {
         getAll: function (cb) {
@@ -65,7 +65,7 @@ var SDK = {
     current:function () {
       return SDK.Storage.load("user");
     },
-    delete: function (data, cb) {
+    delete: function (data,cb) {
       SDK.request({method: "POST", url: "/deleteuser",data:data}, cb);
     }
   },

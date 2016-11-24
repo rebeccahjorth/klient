@@ -52,6 +52,9 @@ var SDK = {
         deletereserved: function (data, cb) {
             SDK.request({method: "POST", url: "/deletereservation", data:data}, cb);
         },
+        updatead: function (data, cb) {
+            SDK.request({method: "POST", url: "/updatead", data:data}, cb);
+        },
 
 
     },

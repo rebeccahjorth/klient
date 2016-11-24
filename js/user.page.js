@@ -17,29 +17,14 @@ $(document).ready(function () {
                 "<td>" + ads.bookAuthor + "</td>" +
                 "<td>" + ads.bookEdition + "</td>" +
                 "<td>" + ads.rating + "</td>" +
-                "<td><button class='showAdButton' data-adId='" + ads.adId + "'>Vis Mere</button></td>"+
+
                 "<td><button class='reserveAdButton' data-adId='" + ads.adId + "'>Reserver</button></td>"+
 
                 "</tr>");
         });
 
 
-        /**
-         * show this ad
-         */
-        $(".showAdButton").on("click", function(){
-            var $showbutton = $(this);
-            var adId = {
-                id: $showbutton.data("adid")};
 
-            SDK.Ads.getAd(adId, function(err) {
-                if (err) throw err;
-
-                $('#newAdModal').modal('show');
-
-
-            });
-        });
 
         /**
          * reserve this ad
@@ -62,13 +47,13 @@ $(document).ready(function () {
     });
 
 
+    /**
+     * Gets my ads + show delete reserved Btn
+     */
 
-
-
-
-    //Fires on page-load
     SDK.MyAds.getAll(function(err, data){
             if(err) throw err;
+
 
 
         var $MyAdsTableBody = $("#myAdsTableBody");
@@ -77,13 +62,12 @@ $(document).ready(function () {
             $MyAdsTableBody.append(
                 "<tr>" +
                 "<td>" + ads.isbn + "</td>" +
-                "<td>" + ads.bookTitle + "</td>" +
-                "<td>" + ads.bookAuthor + "</td>" +
-                "<td>" + ads.bookEdition + "</td>" +
+                "<td>" + ads.price + "</td>" +
                 "<td>" + ads.comment + "</td>" +
                 "<td>" + ads.rating + "</td>" +
                 "<td>" + ads.locked + "</td>" +
                 "<td><button class='deleteReservedButton' data-adId='" + ads.adId + "'>Slet reservation</button></td>"+
+                "<td><button class='updateAdButton' data-adId='" + ads.adId + "'>Vis Mere</button></td>"+
                 "</tr>");
         });
 
@@ -102,8 +86,25 @@ $(document).ready(function () {
 
 
             });
+
         });
 
+        /**
+         * update this ad
+         */
+        $(".updateAdButton").on("click", function(){
+            var $updatebutton = $(this);
+            var adId = {
+                id: $updatebutton.data("adid")};
+
+            SDK.Ads.updatead(adId, function(err) {
+                if (err) throw err;
+                $("#updateAdModal").modal("show");
+
+
+
+            });
+        });
     });
 
     /**
@@ -141,6 +142,9 @@ $(document).ready(function () {
         });
 
     });
+
+
+    // logout
 
     $("#logOutLink").on("click", function () {
         SDK.logOut();

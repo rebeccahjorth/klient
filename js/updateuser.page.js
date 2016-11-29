@@ -1,11 +1,15 @@
 /**
+ * Created by Rebecca on 29-11-2016.
+ */
+
+/**
  * Created by Rebecca on 16-11-2016.
  */
 
 /**
  * Add a new User
  */
-$("#addNewUserButton").on("click", function () {
+$("#updateUserButton").on("click", function () {
 
     var mobileIsChosen = 0;
     if($("input[name=mobilepay]:checked").val()){
@@ -37,14 +41,17 @@ $("#addNewUserButton").on("click", function () {
     //Create user
 
 
-        SDK.User.create(user, function(err, data){
+    SDK.User.update(user, function(err, data){
         if(err) throw err;
-       console.log(user.username);
+        console.log(user.username);
 
         window.location.href= "user.html";
     });
 
 
+    $("#closeUserButton").on("click", function () {
+        window.location.href= "user.html";
+    });
 
 
 });

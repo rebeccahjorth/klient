@@ -143,6 +143,30 @@ $(document).ready(function () {
 
     });
 
+    /**
+     * Gets my ads + show delete reserved Btn
+     */
+
+    SDK.MyAds.getReservation(function(err, data){
+        if(err) throw err;
+
+
+
+        var $MyReservationTableBody = $("#myReservationTableBody");
+        data.forEach(function (ads ) {
+
+            $MyReservationTableBody.append(
+                "<tr>" +
+                "<td>" + ads.adId + "</td>" +
+                "<td>" + ads.bookIsbn + "</td>" +
+                "<td>" + ads.userUsername + "</td>" +
+                "<td>" + ads.userPhonenumber + "</td>" +
+                "<td>" + ads.timestamp + "</td>" +
+                "</tr>");
+        });
+        });
+
+
 
     // logout
 

@@ -64,6 +64,9 @@ var SDK = {
         getAll: function (cb) {
             SDK.request({method: "GET", url: "/getmyads"}, cb);
         },
+        getReservation: function (cb) {
+            SDK.request({method: "GET", url: "/getmyreservations"}, cb);
+        },
 
 
     },
@@ -80,6 +83,10 @@ var SDK = {
     },
     delete: function (data,cb) {
       SDK.request({method: "POST", url: "/deleteuser",data:data}, cb);
+    },
+
+    update: function (data,cb){
+        SDK.request({method:"POST",url:"/updateuser", data:data},cb);
     }
   },
 

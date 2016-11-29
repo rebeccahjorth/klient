@@ -27,12 +27,6 @@ $(document).ready(function () {
         window.location.href = "user.html";
       }
 
-
-
-
-
-
-
     });
 
   });

@@ -76,11 +76,11 @@ $(document).ready(function () {
           var $deleteButton = $(this);
 
           var userId = {
-              userId: $deleteButton.data("userid")};
+              id: $deleteButton.data("userid")};
 
-          SDK.User.delete(userId, function(err) {
+          SDK.User.delete(userId, function(err,data) {
               if (err) throw err;
-
+                location.reload();
           });
           });
 

@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<!-- show this ad -->
+ <!--show this ad
 <div class="modal fade" id="updateAdModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -60,7 +60,7 @@
         </div>
     </div>
 </div>
-
+-->
 <!-- Create new annonce -->
 <div class="modal fade" id="newAdModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -135,6 +135,7 @@
                             <li><a>Velkommen: <span id="currentUserName"></span></a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
+                            <li><a href="updateuser.html">Opdater bruger </a></li>
                             <li><a id="logOutLink">Logud</a></li>
                         </ul>
                     </div>
@@ -173,6 +174,30 @@
                     <button class="btn btn-success" id="addNewAdButton">
                         <span class="glyphicon glyphicon-plus"></span> Opret ny annonce
                     </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Mine Reservationer</h3>
+                </div>
+                <div class="panel-body">
+
+                    <table class="table table-striped">
+                        <thead>
+                        <th>ID</th>
+                        <th>ISBN</th>
+                        <th>Kontakt</th>
+                        <th>Kontakt nr.</th>
+                        <th>Tidspunkt</th>
+                        </thead>
+                        <tbody id="myReservationTableBody"> </tbody>
+                    </table>
+
+
 
                 </div>
 

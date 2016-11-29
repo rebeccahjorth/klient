@@ -5,46 +5,52 @@
 /**
  * Add a new User
  */
-$("#addNewUserButton").on("click", function () {
+$(document).ready(function () {
 
-    var mobileIsChosen = 0;
-    if($("input[name=mobilepay]:checked").val()){
-        mobileIsChosen = 1;
-    }
-    var cashIsChosen =0;
-    if($("input[name=cash]:checked").val()){
-        cashIsChosen=1;
-    }
-    var transferIsChosen =0;
-    if ($("input[name=transfer]:checked").val()){
-        transferIsChosen=1;
-    }
+    $("#addNewUserButton").on("click", function () {
 
-    //Create JSON object
-    var user = {
-        username: $("#newUserUsername").val(),
-        password: $("#newUserPassword").val(),
-        email: $("#newUserEmail").val(),
-        phonenumber: parseInt( $("#newUserPhonenumber").val()),
-        address: $("#newUserAdress").val(),
-
-        mobilepay: mobileIsChosen,
-        cash: cashIsChosen,
-        transfer: transferIsChosen
-    };
+        var mobileIsChosen = 0;
+        if ($("input[name=mobilepay]:checked").val()) {
+            mobileIsChosen = 1;
+        }
+        var cashIsChosen = 0;
+        if ($("input[name=cash]:checked").val()) {
+            cashIsChosen = 1;
+        }
+        var transferIsChosen = 0;
+        if ($("input[name=transfer]:checked").val()) {
+            transferIsChosen = 1;
+        }
 
 
-    //Create user
+        //Create JSON object
+        var user = {
+            username: $("#newUserUsername").val(),
+            password: $("#newUserPassword").val(),
+
+            email: $("#newUserEmail").val(),
+            phonenumber: parseInt($("#newUserPhonenumber").val()),
+            address: $("#newUserAdress").val(),
+
+            mobilepay: mobileIsChosen,
+            cash: cashIsChosen,
+            transfer: transferIsChosen
+        };
 
 
-        SDK.User.create(user, function(err, data){
-        if(err) throw err;
-       console.log(user.username);
+        //Create user
 
-        window.location.href= "user.html";
+
+        SDK.User.create(user, function (err, data) {
+            if (err) throw err;
+
+
+            console.log(user.username);
+
+            window.location.href = "user.html";
+        });
+
+
     });
-
-
-
 
 });

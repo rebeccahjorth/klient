@@ -52,7 +52,7 @@ var SDK = {
         deletereserved: function (data, cb) {
             SDK.request({method: "POST", url: "/deletereservation", data:data}, cb);
         },
-        updatead: function (data, cb) {
+        update: function (data, cb) {
             SDK.request({method: "POST", url: "/updatead", data:data}, cb);
         },
 
@@ -67,6 +67,10 @@ var SDK = {
         getReservation: function (cb) {
             SDK.request({method: "GET", url: "/getmyreservations"}, cb);
         },
+        unlockAd: function (data,cb) {
+            SDK.request({method: "POST", url: "/unlockad", data:data}, cb);
+        },
+
 
 
     },
@@ -82,7 +86,7 @@ var SDK = {
       return SDK.Storage.load("user");
     },
     delete: function (data,cb) {
-      SDK.request({method: "POST", url: "/deleteuser",data:data}, cb);
+      SDK.request({method: "POST", url: "/deleteuseradmin",data:data}, cb);
     },
 
     update: function (data,cb){
@@ -93,15 +97,14 @@ var SDK = {
 
 
   logOut:function() {
-    SDK.Storage.remove("userId");
-    SDK.Storage.remove("user");
+
   },
 
   login: function (username, password, cb) {
     this.request({
       data: {
         username: username,
-        password: password,
+        password: password
       },
       url: "/login",
       method: "POST"
@@ -110,31 +113,11 @@ var SDK = {
       //On login-error
       if (err) return cb(err);
 
-      SDK.Storage.persist("userId", data.userId);
-      SDK.Storage.persist("user", data.username);
+
 
       cb(null, data);
 
     });
-  },
-
-  Storage: {
-    prefix: "BookStoreSDK",
-    persist: function (key, value) {
-      window.localStorage.setItem(this.prefix + key, (typeof value === 'object') ? JSON.stringify(value) : value)
-    },
-    load: function (key) {
-      var val = window.localStorage.getItem(this.prefix + key);
-      try {
-        return JSON.parse(val);
-      }
-      catch (e){
-        return val;
-      }
-    },
-    remove:function (key) {
-      window.localStorage.removeItem(this.prefix + key);
-    }
   }
 
 

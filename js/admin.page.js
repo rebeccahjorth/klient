@@ -41,20 +41,42 @@ $(document).ready(function () {
 
 
 
-  var currentUser = SDK.User.current();
-  $("#currentUserName").text(currentUser.username);
+
 
 
 
     /**
     * get all users in a table with btn
      */
-  SDK.User.getAll(function (err, users) {
+  SDK.User.getAll(function (err, user) {
     if (err) throw err;
+      function mobilepay(){
+          if(user.mobilepay==1){
+              return "Ja"
+          }else{
+              return "Nej"}}
+
+      function cash(){
+          if(user.cash==1){
+              return "Ja"
+
+          } else {
+              return "Nej"
+          }
+
+      }
+      function transfer(){
+          if(user.transfer==1){
+              return "Ja"
+
+          } else {
+              return "Nej"
+          }
+      }
 
 
     var $usersTableBody = $("#usersTableBody");
-    users.forEach(function (user) {
+    user.forEach(function (user) {
 
       $usersTableBody.append(
           "<tr>" +
@@ -62,27 +84,29 @@ $(document).ready(function () {
           "<td>" + user.password + "</td>" +
           "<td>" + user.email + "</td>" +
           "<td>" + user.phonenumber + "</td>" +
+          "<td>" + mobilepay() + "</td>" +
+          "<td>" + cash() + "</td>" +
+          "<td>" + transfer() + "</td>" +
           "<td><button class='deleteUserButton' data-userId='" + user.userId + "'>Slet</button></td>"+
           "</tr>");
 
     });
 
-
-
       /**
        * delete user btn
        */
       $(".deleteUserButton").on("click", function(){
-          var $deleteButton = $(this);
+          var $deleteUserBtn = $(this);
 
           var userId = {
-              id: $deleteButton.data("userid")};
+              id: $deleteUserBtn.data("userid")};
 
           SDK.User.delete(userId, function(err,data) {
               if (err) throw err;
-                location.reload();
+              location.reload();
           });
-          });
+      });
+
 
 
 

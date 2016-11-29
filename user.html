@@ -12,8 +12,8 @@
 
 </head>
 <body>
- <!--show this ad
-<div class="modal fade" id="updateAdModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+ <!--show this ad -->
+<div class="modal fade" id="showAdModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -27,26 +27,26 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="control-label" for="adIsbn">ISBN</label>
-                            <input class="form-control" id="adIsbn" type="text">
+                            <input class="form-control" id="updateAdIsbn" type="text">
                         </div>
                     </div>
 
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="control-label" for="adRating">Rating</label>
-                            <input class="form-control" id="adRating" type="text">
+                            <input class="form-control" id="updateAdadRating" type="text">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="control-label" for="adComment">Kommentar</label>
-                            <input class="form-control" id="adComment" type="text">
+                            <input class="form-control" id="updateAdComment" type="text">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="control-label" for="adPrice">Price</label>
-                            <input class="form-control" id="adPrice" type="text">
+                            <input class="form-control" id="updateAdPrice" type="text">
                         </div>
                     </div>
 
@@ -55,12 +55,12 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Luk</button>
-                <button type="button" class="btn btn-success" id="createAdButton">Opret annonce</button>
+                <button type="button" class="btn btn-success" id="showAdButton">Vis annonce</button>
             </div>
         </div>
     </div>
 </div>
--->
+
 <!-- Create new annonce -->
 <div class="modal fade" id="newAdModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -161,6 +161,7 @@
                         <th>Forfatter</th>
                         <th>Edition</th>
                         <th>Rating</th>
+                        <th>Pris</th>
                         <th>Mere info</th>
                         </thead>
                         <tbody id="adsTableBody">

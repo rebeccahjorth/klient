@@ -5,6 +5,7 @@
 /**
  * Add a new User
  */
+
 $(document).ready(function () {
 
     $("#addNewUserButton").on("click", function () {

@@ -43,8 +43,8 @@ var SDK = {
             SDK.request({method: "POST", url: "/createad", data: data}, cb);
 
         },
-        getAd: function (cb) {
-            SDK.request({method: "GET", url: "/getadpublic"}, cb);
+        getAd: function (data,cb) {
+            SDK.request({method: "POST", url: "/getadpublic", data: data}, cb);
         },
         reserve: function (data, cb) {
             SDK.request({method: "POST", url: "/reservead", data:data}, cb);

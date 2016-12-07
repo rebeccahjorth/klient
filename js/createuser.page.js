@@ -3,13 +3,15 @@
  */
 
 /**
- * Add a new User
+ * Create a new User
  */
+
 
 $(document).ready(function () {
 
     $("#addNewUserButton").on("click", function () {
 
+        /* variabel som sætter mine checkbox til at være 0 hvis de ikke er checked og 1 hvis de er*/
         var mobileIsChosen = 0;
         if ($("input[name=mobilepay]:checked").val()) {
             mobileIsChosen = 1;
@@ -24,10 +26,12 @@ $(document).ready(function () {
         }
 
 
-        //Create JSON object
+        //opretter JSON objekt
         var user = {
             username: $("#newUserUsername").val(),
             password: $("#newUserPassword").val(),
+            password2: $("#confirmNewUserPassword").val(),
+
 
             email: $("#newUserEmail").val(),
             phonenumber: parseInt($("#newUserPhonenumber").val()),
@@ -39,16 +43,13 @@ $(document).ready(function () {
         };
 
 
-        //Create user
+        //opretter en bruger fra det oprettede JSON objekt
 
 
         SDK.User.create(user, function (err, data) {
             if (err) throw err;
 
-
-            console.log(user.username);
-
-            window.location.href = "user.html";
+            window.location.href = "login.html";
         });
 
 

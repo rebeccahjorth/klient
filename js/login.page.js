@@ -3,7 +3,9 @@ $(document).ready(function () {
 
 
 
-
+/**
+* metode der logger ind og tjekker at det eksistere, e.preventDefault forhindre at login knap virker hvis der er fejl
+ */
   $("#loginButton").on("click", function(e){
     e.preventDefault();
 
@@ -13,9 +15,12 @@ $(document).ready(function () {
 
     SDK.login(username, pw, function(err, data){
 
-      //On wrong credentials
+      //Forkert eller ikke eksisterende brugernavn/kode
       if(err) {
+
         return $("#loginForm").find(".form-group").addClass("has-error");
+
+
       }
 
       //Login OK!

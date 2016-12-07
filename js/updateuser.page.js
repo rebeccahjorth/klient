@@ -1,13 +1,6 @@
-/**
- * Created by Rebecca on 29-11-2016.
- */
 
 /**
- * Created by Rebecca on 16-11-2016.
- */
-
-/**
- * Add a new User
+ * update user
  */
 $("#updateUserButton").on("click", function () {
 
@@ -38,7 +31,7 @@ $("#updateUserButton").on("click", function () {
     };
 
 
-    //Create user
+    //opret bruger
 
 
     SDK.User.update(user, function(err, data){

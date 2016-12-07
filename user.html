@@ -5,33 +5,36 @@
     <link rel="stylesheet" href="lib/css/bootstrap.css">
     <link rel="stylesheet" href="lib/css/bootstrap.lumen.min.css">
     <link rel="stylesheet" href="css/sticky-footer.css">
+    <link rel="stylesheet" href="css/my.css">
+
 
 
     <meta charset="UTF-8">
     <title>User panel</title>
 
+
+
 </head>
+
 <body>
 <img id = "loading" src = "loading.gif.gif" alt = "Loading indicator">
  <!--show this ad -->
 <div class="modal fade" id="showAdModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content1">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title"> Denne annonce </h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body1">
 
 
 
                 <table class="table table-striped">
 
                     <thead>
-                    <th>ISBN</th>
-
-                    <th>Titel</th>
+                     <th>Titel</th>
                     <th>Forfatter</th>
                     <th>Udgave</th>
                     <th>Pris</th>
@@ -39,9 +42,10 @@
                     <th>Rating</th>
                     <th>Kontakt person</th>
                     <th>Kontakt nr</th>
-                    <th> Mobilepay</th>
-                    <th> Kontanter</th>
-                    <th> Overførsel</th>
+                    <th>Email</th>
+                    <th>Mobilepay</th>
+                    <th>Kontanter</th>
+                    <th>Overførsel</th>
                     <th></th>
                     </thead>
                     <tbody id="thisAdTableBody">
@@ -52,7 +56,6 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Luk</button>
-                <button type="button" class="btn btn-success" id="showAdButton">Resever annnonce</button>
             </div>
         </div>
     </div>
@@ -126,7 +129,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.html"> Brugtbogsbørs </a>
+                        <a class="navbar-brand" href="user.html"> Brugtbogsbørs </a>
                     </div>
 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">

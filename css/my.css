@@ -22,3 +22,32 @@
 .hide{
     display: none;
 }
+/* laver modal større så den passer til vis denne annonce fundet nedenunder
+http://stackoverflow.com/questions/16152275/how-to-resize-twitter-bootstrap-modal-dynamically-based-on-the-content
+*/
+.modal-content1 {
+position: relative;
+overflow-y: auto;
+max-height: 400px;
+padding: 15px;
+    width: 950px;
+    background-color: white;
+}
+
+.modal-body1 {
+    position: relative;
+    overflow-y: auto;
+    max-height: 400px;
+    padding: 15px;
+    width: 950px;
+    background-color: white;
+}
+.modal-header1{
+    position: relative;
+    overflow-y: auto;
+    max-height: 400px;
+    padding: 15px;
+    width: 950px;
+    background-color: white;
+}
+

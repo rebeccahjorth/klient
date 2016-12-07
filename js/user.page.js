@@ -47,27 +47,12 @@ $(document).ready(function () {
         });
 
 
-        /**
-         * show this ad
-         */
-/*
-        $(".showAdButton").on("click", function () {
-            var $showbutton = $(this);
-            var adId = {
-                id: $showbutton.data("adid")
-            };
 
-
-            //Show modal
-            $('#showAdModal').modal('show');
-
-
-        });*/
     });
 
 
     /**
-     * Gets my ads + show delete reserved Btn
+     * Gets my ads + unlock reserved Btn
      */
 
     SDK.MyAds.getAll(function (err, data) {
@@ -85,7 +70,8 @@ $(document).ready(function () {
                 "<td>" + ads.rating + "</td>" +
                 "<td>" + ads.locked + "</td>" +
                 "<td><button class='unlockReservedButton' data-adId='" + ads.adId + "'>Slet reservation</button></td>" +
-                "<td><button class='showAdButton' data-adId='" + ads.adId + "'>Vis Mere</button></td>" +
+                "<td><button class='deleteAdButton' data-adId='" + ads.adId + "'>Slet annonce</button></td>" +
+
                 "</tr>");
         });
 
@@ -109,12 +95,32 @@ $(document).ready(function () {
         });
 
         /**
+         * slet min annonce,
+         */
+        $(".deleteAdButton").on("click", function () {
+            var $deleteAdBtn = $(this);
+            var adId = {
+                id: $deleteAdBtn.data("adid")
+            };
+
+            SDK.MyAds.deleteAd(adId, function (err) {
+                if (err) throw err;
+                location.reload();
+
+
+            });
+
+
+        });
+
+
+        /**
          * show this ad
          */
         $(".showAdButton").on("click", function () {
-            var $showAdButton = $(this);
+            var $showAdBtn = $(this);
             var adId = {
-                id: $showAdButton.data("adid")
+                id: $showAdBtn.data("adid")
             };
             //Show modal
             $('#showAdModal').modal('show');
@@ -128,8 +134,8 @@ $(document).ready(function () {
 
                     $("#thisAdTableBody").append(
                         "<tr>" +
-                        "<td>" + data.bookAuthor + "</td>" +
                         "<td>" + data.bookTitle + "</td>" +
+                        "<td>" + data.bookAuthor + "</td>" +
                         "<td>" + data.bookEdition + "</td>" +
                         "<td>" + data.price + "</td>" +
                         "<td>" + data.comment + "</td>" +
@@ -137,14 +143,16 @@ $(document).ready(function () {
                         "<td>" + data.userUsername + "</td>" +
                         "<td>" + data.userPhonenumber + "</td>" +
                         "<td>" + data.userAddress + "</td>" +
-                        "<td>" + data.userAddress + "</td>" +
                         "<td>" + data.userMobilepay + "</td>" +
                         "<td>" + data.userCash + "</td>" +
                         "<td>" + data.userTransfer + "</td>" +
                         "</tr>");
                 });
 
+
         });
+
+
     });
 
 
@@ -173,7 +181,6 @@ $(document).ready(function () {
             //Create ad
             SDK.Ads.create(ad, function (err, data) {
                 if (err) throw err;
-                window.alert("Der skete en fejl");
 
                 $("#newAdModal").modal("hide");
                 window.alert("Annoncen blev oprettet");
@@ -185,13 +192,14 @@ $(document).ready(function () {
     });
 
     /**
-     * Gets my reservation + show delete reserved Btn
+     * Gets my reservation + delete reserved Btn
      */
 
     SDK.MyAds.getReservation(function (err, data) {
         if (err) throw err;
 
 
+    //oprettelse af knap i tabel ref: http://stackoverflow.com/questions/23434246/easiest-way-to-add-a-button-on-each-row-of-a-table-html
 
         var $MyReservationTableBody = $("#myReservationTableBody");
         data.forEach(function (ads) {

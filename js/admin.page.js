@@ -25,10 +25,10 @@ $(document).ready(function () {
        * delete user btn
        */
       $(".deleteBookBtn").on("click", function(){
-          var $deleteButton = $(this);
+          var $deleteBtn = $(this);
 
           var isbn = {
-              isbn: $deleteButton.data("isbn")};
+              isbn: $deleteBtn.data("isbn")};
 
           SDK.Book.delete(isbn, function(err,data) {
               if (err) throw err;
@@ -49,34 +49,41 @@ $(document).ready(function () {
     * get all users in a table with btn
      */
   SDK.User.getAll(function (err, user) {
-    if (err) throw err;
-      function mobilepay(){
-          if(user.mobilepay==1){
-              return "Ja"
-          }else{
-              return "Nej"}}
-
-      function cash(){
-          if(user.cash==1){
-              return "Ja"
-
-          } else {
-              return "Nej"
-          }
-
-      }
-      function transfer(){
-          if(user.transfer==1){
-              return "Ja"
-
-          } else {
-              return "Nej"
-          }
-      }
+      if (err) throw err;
 
 
     var $usersTableBody = $("#usersTableBody");
     user.forEach(function (user) {
+
+        /**
+        * nedenstående funktion viser mobile pay om det er ja eller nej
+         */
+        function mobilepay() {
+            if (user.mobilepay==1) {
+                return "Ja"
+            } else {
+                return "Nej"
+            }
+        }
+        function cash(){
+            if(user.cash==1){
+                return "Ja"
+
+            } else {
+                return "Nej"
+            }
+
+        }
+        function transfer() {
+            if (user.transfer == 1) {
+                return "Ja"
+
+            } else {
+                return "Nej"
+            }
+
+        }
+
 
       $usersTableBody.append(
           "<tr>" +
@@ -93,7 +100,7 @@ $(document).ready(function () {
     });
 
       /**
-       * delete user btn
+       * delete user btn, der henter id, så man kan slette specifik user
        */
       $(".deleteUserButton").on("click", function(){
           var $deleteUserBtn = $(this);
@@ -118,7 +125,7 @@ $(document).ready(function () {
 
 
   /**
-   * Add a new Book
+   * Add a new Book.
    */
   $("#addNewBookButton").on("click", function () {
 
@@ -151,12 +158,6 @@ $(document).ready(function () {
     });
 
   });
-
-
-
-
-
-
 
 
 

@@ -12,6 +12,7 @@
 
 </head>
 <body>
+<img id = "loading" src = "loading.gif.gif" alt = "Loading indicator">
  <!--show this ad -->
 <div class="modal fade" id="showAdModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -23,16 +24,25 @@
             </div>
             <div class="modal-body">
 
+
+
                 <table class="table table-striped">
+
                     <thead>
-                    <th>ID</th>
                     <th>ISBN</th>
+
                     <th>Titel</th>
                     <th>Forfatter</th>
-                    <th>Edition</th>
-                    <th>Rating</th>
+                    <th>Udgave</th>
                     <th>Pris</th>
-                    <th>Mere info</th>
+                    <th>Kommentar</th>
+                    <th>Rating</th>
+                    <th>Kontakt person</th>
+                    <th>Kontakt nr</th>
+                    <th> Mobilepay</th>
+                    <th> Kontanter</th>
+                    <th> Overførsel</th>
+                    <th></th>
                     </thead>
                     <tbody id="thisAdTableBody">
 
@@ -99,6 +109,8 @@
 
 
 
+
+ <!-- Navbar -->
 <div class="container">
 
     <div class="row">
@@ -118,9 +130,7 @@
                     </div>
 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-                        <ul class="nav navbar-nav">
-                            <li><a>Velkommen: <span id="currentUserName"></span></a></li>
-                        </ul>
+
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="updateuser.html">Opdater bruger </a></li>
                             <li><a id="logOutLink">Logud</a></li>
@@ -129,7 +139,7 @@
                 </div>
             </nav>
 
-
+        <!-- Visning af annoncer til salg -->
             <div class="page-header">
                 <h1>Bruger panel</h1>
             </div>
@@ -167,7 +177,7 @@
 
             </div>
 
-
+            <!-- visning af mine reservationer -->
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">Mine Reservationer</h3>
@@ -190,6 +200,8 @@
                 </div>
 
             </div>
+
+
 
             <div class="panel panel-primary">
                 <div class="panel-heading">

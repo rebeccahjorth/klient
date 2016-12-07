@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    $(window).ready(function() {
+        $('#loading').remove();
+    });
+
 
     //Fires on page-load
     SDK.Ads.getAll(function (err, data) {
@@ -46,7 +50,7 @@ $(document).ready(function () {
         /**
          * show this ad
          */
-
+/*
         $(".showAdButton").on("click", function () {
             var $showbutton = $(this);
             var adId = {
@@ -58,7 +62,7 @@ $(document).ready(function () {
             $('#showAdModal').modal('show');
 
 
-        });
+        });*/
     });
 
 
@@ -120,14 +124,23 @@ $(document).ready(function () {
                 if (err) throw err;
 
 
+
+
                     $("#thisAdTableBody").append(
                         "<tr>" +
-                        "<td>" + data.isbn + "</td>" +
                         "<td>" + data.bookAuthor + "</td>" +
                         "<td>" + data.bookTitle + "</td>" +
                         "<td>" + data.bookEdition + "</td>" +
+                        "<td>" + data.price + "</td>" +
                         "<td>" + data.comment + "</td>" +
                         "<td>" + data.rating + "</td>" +
+                        "<td>" + data.userUsername + "</td>" +
+                        "<td>" + data.userPhonenumber + "</td>" +
+                        "<td>" + data.userAddress + "</td>" +
+                        "<td>" + data.userAddress + "</td>" +
+                        "<td>" + data.userMobilepay + "</td>" +
+                        "<td>" + data.userCash + "</td>" +
+                        "<td>" + data.userTransfer + "</td>" +
                         "</tr>");
                 });
 
@@ -158,10 +171,12 @@ $(document).ready(function () {
 
 
             //Create ad
-            SDK.Ads.update(ad, function (err, data) {
+            SDK.Ads.create(ad, function (err, data) {
                 if (err) throw err;
+                window.alert("Der skete en fejl");
 
                 $("#newAdModal").modal("hide");
+                window.alert("Annoncen blev oprettet");
                 location.reload();
             });
 
@@ -175,6 +190,7 @@ $(document).ready(function () {
 
     SDK.MyAds.getReservation(function (err, data) {
         if (err) throw err;
+
 
 
         var $MyReservationTableBody = $("#myReservationTableBody");
@@ -199,6 +215,7 @@ $(document).ready(function () {
 
             SDK.Ads.deletereserved(adId, function (err) {
                 if (err) throw err;
+                window.alert("Annoncen er slettet");
                 location.reload();
 
 
@@ -208,6 +225,7 @@ $(document).ready(function () {
 
 
     });
+
 
 
 // logout

@@ -47,7 +47,6 @@ $(document).ready(function () {
         });
 
 
-
     });
 
 
@@ -236,7 +235,7 @@ $(document).ready(function () {
 
 
 
-// logout
+// logud funktion, når man klikker på knappen
 
     $("#logOutLink").on("click", function () {
         SDK.logOut();

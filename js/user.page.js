@@ -1,7 +1,5 @@
 $(document).ready(function () {
-    $(window).ready(function() {
-        $('#loading').remove();
-    });
+
 
 
     //Fires on page-load
@@ -28,7 +26,43 @@ $(document).ready(function () {
                 "</tr>");
         });
 
+        /**
+         * show this ad
+         */
+        $(".showAdButton").on("click", function () {
+            var $showAdBtn = $(this);
+            var adId = {
+                id: $showAdBtn.data("adid")
+            };
+            //Show modal
+            $('#showAdModal').modal('show');
 
+
+            SDK.Ads.getAd(adId, function (err,data) {
+                if (err) throw err;
+
+
+                // this ad table
+
+                $("#thisAdTableBody").append(
+                    "<tr>" +
+                    "<td>" + data.bookTitle + "</td>" +
+                    "<td>" + data.bookAuthor + "</td>" +
+                    "<td>" + data.bookEdition + "</td>" +
+                    "<td>" + data.price + "</td>" +
+                    "<td>" + data.comment + "</td>" +
+                    "<td>" + data.rating + "</td>" +
+                    "<td>" + data.userUsername + "</td>" +
+                    "<td>" + data.userPhonenumber + "</td>" +
+                    "<td>" + data.userAddress + "</td>" +
+                    "<td>" + data.userMobilepay + "</td>" +
+                    "<td>" + data.userCash + "</td>" +
+                    "<td>" + data.userTransfer + "</td>" +
+                    "</tr>");
+            });
+
+
+        });
         /**
          * reserve this ad
          */
@@ -75,7 +109,7 @@ $(document).ready(function () {
         });
 
         /**
-         * unlock my ad this ad
+         * unlock my ad
          */
         $(".unlockReservedButton").on("click", function () {
             var $unlockReservedBtn = $(this);
@@ -94,7 +128,7 @@ $(document).ready(function () {
         });
 
         /**
-         * slet min annonce,
+         * delete my ads,
          */
         $(".deleteAdButton").on("click", function () {
             var $deleteAdBtn = $(this);
@@ -113,43 +147,7 @@ $(document).ready(function () {
         });
 
 
-        /**
-         * show this ad
-         */
-        $(".showAdButton").on("click", function () {
-            var $showAdBtn = $(this);
-            var adId = {
-                id: $showAdBtn.data("adid")
-            };
-            //Show modal
-            $('#showAdModal').modal('show');
 
-
-            SDK.Ads.getAd(adId, function (err,data) {
-                if (err) throw err;
-
-
-
-
-                    $("#thisAdTableBody").append(
-                        "<tr>" +
-                        "<td>" + data.bookTitle + "</td>" +
-                        "<td>" + data.bookAuthor + "</td>" +
-                        "<td>" + data.bookEdition + "</td>" +
-                        "<td>" + data.price + "</td>" +
-                        "<td>" + data.comment + "</td>" +
-                        "<td>" + data.rating + "</td>" +
-                        "<td>" + data.userUsername + "</td>" +
-                        "<td>" + data.userPhonenumber + "</td>" +
-                        "<td>" + data.userAddress + "</td>" +
-                        "<td>" + data.userMobilepay + "</td>" +
-                        "<td>" + data.userCash + "</td>" +
-                        "<td>" + data.userTransfer + "</td>" +
-                        "</tr>");
-                });
-
-
-        });
 
 
     });

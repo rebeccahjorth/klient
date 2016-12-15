@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     $("#addNewUserButton").on("click", function () {
 
-        /* variabel som sætter mine checkbox til at være 0 hvis de ikke er checked og 1 hvis de er*/
+        // variabel som sætter mine checkbox til at være 0 hvis de ikke er checked og 1 hvis de er
         var mobileIsChosen = 0;
         if ($("input[name=mobilepay]:checked").val()) {
             mobileIsChosen = 1;

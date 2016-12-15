@@ -85,9 +85,7 @@ var SDK = {
     create: function (data, cb) {
       SDK.request({method: "POST", url: "/createuser", data: data}, cb);
     },
-    current:function (data,cb) {
-      return SDK.request({method: "POST",url: "/getuser", data: data}, cb);
-    },
+
     delete: function (data,cb) {
       SDK.request({method: "POST", url: "/deleteuseradmin",data:data}, cb);
     },

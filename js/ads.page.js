@@ -1,6 +1,8 @@
 $(document).ready(function () {
 
-    //Fires on page-load
+    //Fires on page-load og henter alle annoncer
+
+
     SDK.Ads.getAll(function(err, data){
         if(err) throw err;
 

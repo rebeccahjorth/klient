@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 
 /**
-* metode der logger ind og tjekker at det eksistere, e.preventDefault forhindre at login knap virker hvis der er fejl
+* metode til login og tjekker at det eksistere, e.preventDefault forhindre at login knap virker hvis der er fejl
  */
   $("#loginButton").on("click", function(e){
     e.preventDefault();

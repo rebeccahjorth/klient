@@ -1,12 +1,14 @@
 $(document).ready(function () {
 
-
+/**
+* viser alle annoncer
+ */
 
     //Fires on page-load
     SDK.Ads.getAll(function (err, data) {
         if (err) throw err;
 
-
+    //oprettelse af knap i tabel ref: http://stackoverflow.com/questions/23434246/easiest-way-to-add-a-button-on-each-row-of-a-table-html
         var $adsTableBody = $("#adsTableBody");
         data.forEach(function (ads) {
 
@@ -196,7 +198,7 @@ $(document).ready(function () {
         if (err) throw err;
 
 
-    //oprettelse af knap i tabel ref: http://stackoverflow.com/questions/23434246/easiest-way-to-add-a-button-on-each-row-of-a-table-html
+
 
         var $MyReservationTableBody = $("#myReservationTableBody");
         data.forEach(function (ads) {

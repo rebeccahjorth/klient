@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+    /**
+     *  Henter alle books
+     */
   //Fires on page-load
   SDK.Book.getAll(function (err, data) {
     if (err) throw err;
@@ -21,9 +24,9 @@ $(document).ready(function () {
 
           "</tr>");
     });
-      /**
-       * delete user btn
-       */
+
+      //  delete user btn
+
       $(".deleteBookBtn").on("click", function(){
           var $deleteBtn = $(this);
 
@@ -40,11 +43,6 @@ $(document).ready(function () {
 
 
 
-
-
-
-
-
     /**
     * get all users in a table with btn
      */
@@ -55,9 +53,9 @@ $(document).ready(function () {
     var $usersTableBody = $("#usersTableBody");
     user.forEach(function (user) {
 
-        /**
-        * nedenstående funktion viser mobile pay om det er ja eller nej
-         */
+
+         //nedenstående funktion viser mobile pay om det er ja eller nej
+
         function mobilepay() {
             if (user.mobilepay==1) {
                 return "Ja"
@@ -125,7 +123,7 @@ $(document).ready(function () {
 
 
   /**
-   * Add a new Book.
+   * Add en ny Book.
    */
   $("#addNewBookButton").on("click", function () {
 
